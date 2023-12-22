@@ -20,7 +20,6 @@ func main() {
 		"md5sum",
 		// 入力された文字列のmd5sumを計算する関数
 		js.FuncOf(func(this js.Value, args []js.Value) any {
-
 			input := args[0].String()
 			if len(input) <= 0 {
 				// 空文字列が入力された場合はエラーを返す
