@@ -15,7 +15,7 @@
 		// Go関数 md5sum を呼び出す例
 		function onClickGenerateMD5() {
 			const input = document.getElementById("md5-input").value;
-            const returned = md5sum(input);
+			const returned = md5sum(input);
 			if (returned.error) {
 				document.getElementById("md5-error").innerHTML = returned.error;
 				return;
