@@ -13,8 +13,9 @@ func main() {
 	// 注意 サンプルコードなので引数のエラーチェックは省略してます。
 
 	// Goの関数をJavaScript中で呼ぶサンプルコード
-	// Globalオブジェクト(window, global)のmd5sumプロパティにGoの関数をセットすることで
-	// 実現している。
+	// Set関数を使う。この関数は、JavaScriptオブジェクトのプロパティを追加する。
+	js.Global().Set("hoge", js.ValueOf("This value is set in Go."))
+	// Globalオブジェクト(window, global)のmd5sumプロパティにGoの関数をセットする。
 	js.Global().Set(
 		"md5sum",
 		// 入力された文字列のmd5sumを計算する関数
