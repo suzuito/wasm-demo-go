@@ -1,0 +1,58 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<script src="wasm_exec.js"></script>
+	<script>
+		const go = new Go();
+		WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+			go.run(result.instance);
+
+			console.log(window.hoge);
+		});
+
+		// Call Go func in js
+		// Go関数 md5sum を呼び出す例
+		function onClickGenerateMD5() {
+			const input = document.getElementById("md5-input").value;
+			const returned = md5sum(input);
+			if (returned.error) {
+				document.getElementById("md5-error").innerHTML = returned.error;
+				return;
+			}
+			document.getElementById("md5-output").value = returned.md5;
+		}
+	</script>
+</head>
+
+<body>
+	<h1>WebAssembly Demo</h1>
+
+	<h3>md5ハッシュ生成</h3>
+	<div>入力された文字列のmd5ハッシュを返します</div>
+	<button onclick="onClickGenerateMD5()">Generate MD5</button>
+	<div>
+		<input id="md5-input" type="text" value="test">
+	</div>
+	<div>
+		<input id="md5-output" type="text" placeholder="md5ハッシュ値" disabled>
+	</div>
+	<div id="md5-error"></div>
+
+	<h3>sha256ハッシュ生成</h3>
+	<div>入力された文字列のsha256ハッシュを返します</div>
+	<button id="sha256-button">Generate SHA256</button>
+	<div>
+		<input id="sha256-input" type="text" value="test">
+	</div>
+	<div>
+		<input id="sha256-output" type="text" placeholder="sha256ハッシュ値" disabled>
+	</div>
+	<div id="sha256-error"></div>
+
+	<h3>Go</h3>
+	<div>実行環境の情報</div>
+	<div id="go-info"></div>
+</body>
+
+</html>
