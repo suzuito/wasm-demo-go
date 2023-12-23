@@ -3,5 +3,5 @@
 [build]
   bin = "/usr/bin/make"
   cmd = "/usr/bin/true"
-  exclude_dir = ["dist", "tmp"]
+  exclude_dir = ["docs", "tmp"]
   include_ext = ["go"]

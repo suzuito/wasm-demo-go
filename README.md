@@ -21,5 +21,5 @@ DEMO=demo001 $(go env GOPATH)/bin/air -c .air.toml
 ## Run
 
 ```bash
-python3 -m http.server -d dist/demo001/
+python3 -m http.server -d docs/
 ```
