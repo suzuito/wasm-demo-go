@@ -1,13 +1,20 @@
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<script src="../wasm_exec.js"></script>
-		<script>
-			const go = new Go();
-			WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
-				go.run(result.instance);
-			});
-		</script>
-	</head>
-	<body></body>
+
+<head>
+	<meta charset="utf-8" />
+	<script src="../wasm_exec.js"></script>
+	<script>
+		const go = new Go();
+		WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+			go.run(result.instance);
+		});
+	</script>
+</head>
+
+<body>
+	<h3>Go</h3>
+	<div>実行環境の情報</div>
+	<div id="go-info"></div>
+</body>
+
 </html>
